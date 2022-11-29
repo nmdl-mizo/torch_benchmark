@@ -20,3 +20,9 @@ The result file will be saved in `torch_bench/SAVE_NAME`.
 
 If you want to add a new benchmark case, please add the code under `torch_bench/codes`.
 If you need additional packages, please add it to `torch_bench/requirements.txt`.
+
+Before running script, please make sure that your code is runnable with this command:
+
+```bash
+python3 [YOUR_CODE]
+```
