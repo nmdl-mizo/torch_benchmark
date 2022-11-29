@@ -1,0 +1,14 @@
+# please add package if you want to use it
+numpy
+pandas
+optuna
+scipy
+scikit-learn
+pytorch-lightning
+tqdm
+pyg-lib
+torch-scatter
+torch-sparse
+torch-cluster
+torch-spline-conv
+torch-geometric
