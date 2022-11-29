@@ -14,6 +14,8 @@ Or only run container:
 ./run.sh [SAVE_NAME (default: torch_benchmark.log)]
 ```
 
+The result file will be saved in `torch_bench/SAVE_NAME`.
+
 ## Add benchmark case
 
 If you want to add a new benchmark case, please add the code under `torch_bench/codes`.
