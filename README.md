@@ -5,13 +5,15 @@
 Build the docker image and run container:
 
 ```bash
-./build_run.sh [SAVE_NAME (default: torch_benchmark.log)] [TORCH_VERSION (default: 1.13.0)] [CUDA_VERSION (default: 11.6)]
+cd torch_bench
+(torch_bench) ./build_run.sh [SAVE_NAME (default: torch_benchmark.log)] [TORCH_VERSION (default: 1.13.0)] [CUDA_VERSION (default: 11.6)]
 ```
 
 Or only run container:
 
 ```bash
-./run.sh [SAVE_NAME (default: torch_benchmark.log)]
+cd torch_bench
+(torch_bench) ./run.sh [SAVE_NAME (default: torch_benchmark.log)]
 ```
 
 The result file will be saved in `torch_bench/SAVE_NAME`.
