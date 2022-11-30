@@ -1,4 +1,5 @@
 import sys
+import time
 
 import torch
 from tqdm import tqdm
@@ -48,6 +49,7 @@ def main():
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=0.5)
 
     print(f"epochs: {epochs}")
+    start = time.time()
     for _ in tqdm(range(epochs)):
         for (x, y) in dataloader:
             x = x.to("cuda")
@@ -58,6 +60,8 @@ def main():
             loss.backward()
             optimizer.step()
         scheduler.step()
+    end = time.time()
+    print(f"elapsed time: {end - start:.3f} [s]")
 
 
 if __name__ == "__main__":
