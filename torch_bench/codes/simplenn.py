@@ -1,4 +1,3 @@
-import sys
 import time
 
 import torch
@@ -35,25 +34,26 @@ def main():
     # train
     batch_size = 64
     epochs = 1000
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
     x = torch.randn(data_size, input_size)
     y = torch.randn(data_size, output_size)
+    x =x.to(device)
+    y = y.to(device)
 
     dataset = torch.utils.data.TensorDataset(x, y)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size)
 
     model = SimpleNN(input_size, hidden_size, output_size, layers)
-    model.to("cuda")
+    model = model.to(device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=0.5)
 
-    print(f"epochs: {epochs}")
+    print(f"epochs: {epochs}", end="\n\t")
     start = time.time()
     for _ in tqdm(range(epochs)):
         for (x, y) in dataloader:
-            x = x.to("cuda")
-            y = y.to("cuda")
             y_pred = model(x)
             loss = torch.nn.functional.mse_loss(y_pred, y)
             optimizer.zero_grad()
@@ -61,7 +61,7 @@ def main():
             optimizer.step()
         scheduler.step()
     end = time.time()
-    print(f"elapsed time: {end - start:.3f} [s]")
+    print(f"GPU iteration time: {end - start:.3f} [s]", end="")
 
 
 if __name__ == "__main__":
